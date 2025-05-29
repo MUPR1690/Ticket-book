@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      padding: 20px;
+    }
+
+    .booking-form {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .booking-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .confirmation {
+      background: #d4edda;
+      color: #155724;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="booking-form">
+    <h2>Ticket Booking</h2>
+    <form id="ticketForm">
+      <label for="name">Passenger Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="from">From:</label>
+      <input type="text" id="from" required>
+
+      <label for="to">To:</label>
+      <input type="text" id="to" required>
+
+      <label for="date">Travel Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="class">Class:</label>
+      <select id="class">
+        <option value="Sleeper">Sleeper</option>
+        <option value="3AC">3AC</option>
+        <option value="2AC">2AC</option>
+        <option value="1AC">1AC</option>
+      </select>
+
+      <button type="submit">Book Ticket</button>
+    </form>
+
+    <div class="confirmation" id="confirmation">
+      ✅ Ticket booked successfully!
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('ticketForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // stop actual form submission
+      confirmation.style.display = 'block';
+      setTimeout(() => {
+        confirmation.style.display = 'none';
+        form.reset();
+      }, 4000); // hide message after 4 sec
+    });
+  </script>
+
+</body>
+</html>
